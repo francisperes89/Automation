@@ -1,16 +1,15 @@
 import os
 import shutil
 
-# Diretório de origem (sua pasta de downloads)
+# Downloads folder
 original_file = '/users/francisoliveira/Downloads'
 
-# Diretórios de destino para diferentes tipos de arquivos
+# Creating directories and giving names
 image_folder = '/users/francisoliveira/Downloads/Images'
 documents_folder = '/users/francisoliveira/Downloads/Documents'
 videos_folder = '/users/francisoliveira/Downloads/Videos'
 install_folder = '/users/francisoliveira/Downloads/Installers'
 
-# Certifique-se de que os diretórios de destino existam, caso contrário, crie-os
 if not os.path.exists(image_folder):
     os.makedirs(image_folder)
 
@@ -23,11 +22,11 @@ if not os.path.exists(videos_folder):
 if not os.path.exists(install_folder):
     os.makedirs(install_folder)
 
-# Percorra todos os arquivos na pasta de downloads
+# Checking all the files
 for arquivo in os.listdir(original_file):
     caminho_arquivo = os.path.join(original_file, arquivo)
 
-    # Verifique o tipo de arquivo e mova-o para a pasta apropriada
+    # Checking the file and moving to the new folder
     if arquivo.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
         shutil.move(caminho_arquivo, os.path.join(image_folder, arquivo))
     elif arquivo.lower().endswith(('.pdf', '.doc', '.docx', '.txt', '.xlsx', '.odt')):
@@ -40,7 +39,7 @@ for arquivo in os.listdir(original_file):
         shutil.move(caminho_arquivo, os.path.join(install_folder, arquivo))
     else:
 
-        print(f"Arquivo não reconhecido: {arquivo}")
+        print(f"File unknown: {arquivo}")
 
-print("Organização concluída.")
+print("Job done!!.")
 
